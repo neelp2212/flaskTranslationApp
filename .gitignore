@@ -1,0 +1,48 @@
+# Python bytecode files
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+
+# Virtual environment
+venv/
+env/
+
+# Dependency directories
+*.egg-info/
+*.eggs/
+dist/
+build/
+
+# IDE or editor settings
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Operating system specific
+.DS_Store
+Thumbs.db
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# Logs
+*.log
+
+# Test coverage
+.coverage
+*.coveragerc
+
+# Pytest
+.cache
+
+# Flask specific
+instance/
+*.db
+
+# Sensitive information
+config.json
+*.pem
+*.key
+*.env

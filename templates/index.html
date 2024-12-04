@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Translator</title>
+</head>
+<body>
+    <h1>Translate Text</h1>
+    <form action="/translate" method="post" id="translate-form">
+        <label for="text">Enter text in English:</label><br>
+        <input type="text" id="text" name="text" required><br><br>
+        <button type="submit">Translate to Finnish</button>
+    </form>
+    <div id="result" style="margin-top:20px;"></div>
+
+    <script>
+        const form = document.getElementById('translate-form');
+        const resultDiv = document.getElementById('result');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData(form);
+            const response = await fetch('/translate', {
+                method: 'POST',
+                body: formData
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                resultDiv.innerHTML = `<p><strong>Original:</strong> ${data.original}</p>
+                                       <p><strong>Translated:</strong> ${data.translated}</p>`;
+            } else {
+                resultDiv.innerHTML = `<p>Error: Unable to translate text.</p>`;
+            }
+        });
+    </script>
+</body>
+</html>
